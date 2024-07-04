@@ -4,14 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Language Selection</title>
+  <script>
+    function setLanguageCookie(language) {
+      const expiryDate = new Date();
+      expiryDate.setFullYear(expiryDate.getFullYear() + 1); // Cookie expires in 1 year
+      document.cookie = `language=${language};expires=${expiryDate.toUTCString()};path=/`;
+    }
+
+    function getLanguageCookie() {
+      const name = 'language=';
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return '';
+    }
+
+    function redirectToLanguagePage() {
+      const language = getLanguageCookie();
+      if (language === 'english') {
+        window.location.href = 'English_Index.html';
+      } else if (language === 'japanese') {
+        window.location.href = 'Japanese_Index.html';
+      }
+    }
+
+    window.onload = function() {
+      redirectToLanguagePage();
+    }
+  </script>
 </head>
 <body>
   <h1>Choose Your Language</h1>
-  <form action="redirect.html" method="get">
+  <form onsubmit="setLanguageCookie(document.querySelector('input[name=language]:checked').value)">
     <input type="radio" id="english" name="language" value="english">
     <label for="english">English</label><br>
     <input type="radio" id="japanese" name="language" value="japanese">
-    <label for="japanese">日本語</label><br><br>
+    <label for="japanese">Japanese</label><br><br>
     <input type="submit" value="Submit">
   </form>
 </body>
