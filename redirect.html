@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    window.onload = function() {
+      var params = new URLSearchParams(window.location.search);
+      var language = params.get('language');
+      if (language === 'english') {
+        window.location.href = 'English_Index.html';
+      } else if (language === 'japanese') {
+        window.location.href = 'Japanese_Index.html';
+      } else {
+        document.body.innerHTML = 'Invalid language selected. Please go back and try again.';
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
