@@ -30,11 +30,11 @@
     function redirectToLanguagePage() {
       const language = getLanguageCookie();
       if (language === 'english') {
-        window.location.href = 'Language/English_Index.html';
+        window.location.href = 'English_Index.html';
       } else if (language === 'japanese') {
-        window.location.href = 'Language/Japanese_Index.html';
+        window.location.href = 'Japanese_Index.html';
       } else if (language === 'korean') {
-        window.location.href = 'Language/Korean_Index.html';
+        window.location.href = 'Korean_Index.html';
       }
     }
 
@@ -49,9 +49,9 @@
     <input type="radio" id="english" name="language" value="english">
     <label for="english">English</label><br>
     <input type="radio" id="japanese" name="language" value="japanese">
-    <label for="japanese">日本語</label><br>
+    <label for="japanese">Japanese</label><br>
     <input type="radio" id="korean" name="language" value="korean">
-    <label for="korean">한국인</label><br><br>
+    <label for="korean">Korean</label><br><br>
     <input type="submit" value="Submit">
   </form>
 </body>
